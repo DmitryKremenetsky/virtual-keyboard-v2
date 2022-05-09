@@ -10,6 +10,18 @@ body {
   text-align: center;
 }
 
+.footer-massage {
+  margin: 0 auto;
+  padding-top: 10px;
+  text-align: center;
+}
+
+.footer-description {
+  margin: 0 auto;
+  padding-top: 10px;
+  text-align: center;
+}
+
 .text-area { 
   display: block;
   width: 700px;

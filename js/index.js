@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable no-self-compare */
 const firstMassage = document.createElement('h1');
 firstMassage.innerText = 'RSS Виртуальная клавиатура';
 firstMassage.classList.add('greeting-massage');
@@ -17,6 +15,16 @@ const keyboardContainer = document.createElement('div');
 keyboardContainer.classList.add('keyboard-container');
 keyboardContainer.id = 'keyboard-container';
 document.body.appendChild(keyboardContainer);
+
+const footerMassage = document.createElement('h3');
+footerMassage.classList.add('footer-massage');
+footerMassage.innerHTML = 'Клавиатура создана в операционной системе Windows';
+document.body.appendChild(footerMassage);
+
+const footerDescriptionMassage = document.createElement('h3');
+footerDescriptionMassage.classList.add('footer-description');
+footerDescriptionMassage.innerHTML = 'Переключение языка нет, но до конца кросс-чека сделаю :)';
+document.body.appendChild(footerDescriptionMassage);
 
 const row1 = document.createElement('div');
 row1.classList.add('rows');
@@ -169,6 +177,59 @@ keyboardContainer.addEventListener('click', (e) => {
     switchCase(keyboardState.capsLock);
   }
 
+  if (e.target.dataset.keyname === 'capslock') {
+    return;
+  }
+
+  if (e.target.dataset.keyname === 'tab') {
+    textArea.value += '    ';
+    return;
+  }
+
+  if (e.target.dataset.keyname === 'shift') {
+    return;
+  }
+
+  if (e.target.dataset.keyname === 'ctrl') {
+    return;
+  }
+
+  if (e.target.dataset.keyname === 'win') {
+    return;
+  }
+
+  if (e.target.dataset.keyname === 'alt') {
+    return;
+  }
+
+  if (e.target.dataset.keyname === 'backspace') {
+    textArea.value = textArea.value.slice(0, -1);
+    return;
+  }
+
+  if (e.target.dataset.keyname === 'del') {
+    textArea.value = textArea.value.slice(0, -1);
+    return;
+  }
+
+  if (e.target.dataset.keyname === 'enter') {
+    textArea.value += '\n';
+    return;
+  }
+
+  if (e.target.dataset.keyname === 'rshift') {
+    return;
+  }
+
+  if (e.target.dataset.keyname === 'rctrl') {
+    return;
+  }
+
+  if (e.target.dataset.keyname === 'space') {
+    textArea.value += ' ';
+    return;
+  }
+
   textArea.value += e.target.textContent;
 });
 
@@ -242,8 +303,6 @@ document.addEventListener('keydown', (e) => {
     if (e.code === 'Tab') {
       tabKey.classList.add('active');
     }
-
-    textArea.value += e.target.textContent;
   }
 });
 
@@ -315,3 +374,40 @@ document.addEventListener('keyup', (e) => {
     }, 200);
   }
 });
+
+for (let i = 0; i < keys.length; i++) {
+  const key = keys[i];
+  key.addEventListener('mouseover', () => {
+    key.classList.add('active');
+  });
+  key.addEventListener('mouseout', () => {
+    key.classList.remove('active');
+
+    if (key === 'CapsLock') {
+      return key.classList.remove('active');
+    }
+    if (key === 'Shift') {
+      return null;
+    }
+
+    return key.classList.remove('active');
+  });
+  key.addEventListener('mousedown', () => {
+    if (key === 'CapsLock') {
+      return;
+    }
+    if (key === 'Shift') {
+      return;
+    }
+    key.classList.add('active');
+  });
+  key.addEventListener('mouseup', () => {
+    if (key === 'CapsLock') {
+      return;
+    }
+    if (key === 'CapsLock') {
+      return;
+    }
+    key.classList.remove('active');
+  });
+}
