@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable no-self-compare */
 const firstMassage = document.createElement('h1');
 firstMassage.innerText = 'RSS Виртуальная клавиатура';
 firstMassage.classList.add('greeting-massage');
@@ -171,3 +173,145 @@ keyboardContainer.addEventListener('click', (e) => {
 });
 
 renderKeyboard(engKeys);
+
+const keys = document.querySelectorAll('.key-container');
+const spaceKey = document.querySelector('.space');
+const ctrlKey = document.querySelector('.ctrl');
+const winKey = document.querySelector('.win');
+const deleteKey = document.querySelector('.del');
+const RightShiftKey = document.querySelector('.rshift');
+const RightCtrlKey = document.querySelector('.rctrl');
+const ArrowUpKey = document.querySelector('.arrow-up');
+const ArrowDownKey = document.querySelector('.down-arrow');
+const ArrowLeftKey = document.querySelector('.left-arrow');
+const ArrowRightKey = document.querySelector('.right-arrow');
+const tabKey = document.querySelector('.tab');
+
+for (let i = 0; i < keys.length; i++) {
+  keys[i].setAttribute('keyname', keys[i].innerText);
+  keys[i].setAttribute('lowerCaseName', keys[i].innerText);
+}
+
+document.addEventListener('keydown', (e) => {
+  for (let i = 0; i < keys.length; i++) {
+    if (e.key === keys[i].getAttribute('keyname')
+    || e.key === keys[i].getAttribute('lowerCaseName')) {
+      keys[i].classList.add('active');
+    }
+
+    if (e.code === 'Space') {
+      spaceKey.classList.add('active');
+    }
+
+    if (e.code === 'ControlLeft') {
+      ctrlKey.classList.add('active');
+    }
+
+    if (e.code === 'MetaLeft') {
+      winKey.classList.add('active');
+    }
+
+    if (e.code === 'Delete') {
+      deleteKey.classList.add('active');
+    }
+
+    if (e.code === 'ShiftRight') {
+      RightShiftKey.classList.add('active');
+    }
+
+    if (e.code === 'ControlRight') {
+      RightCtrlKey.classList.add('active');
+    }
+
+    if (e.code === 'ArrowUp') {
+      ArrowUpKey.classList.add('active');
+    }
+
+    if (e.code === 'ArrowDown') {
+      ArrowDownKey.classList.add('active');
+    }
+
+    if (e.code === 'ArrowLeft') {
+      ArrowLeftKey.classList.add('active');
+    }
+
+    if (e.code === 'ArrowRight') {
+      ArrowRightKey.classList.add('active');
+    }
+
+    if (e.code === 'Tab') {
+      tabKey.classList.add('active');
+    }
+
+    textArea.value += e.target.textContent;
+  }
+});
+
+document.addEventListener('keyup', (e) => {
+  for (let i = 0; i < keys.length; i++) {
+    if (e.key === keys[i].getAttribute('keyname')
+    || e.key === keys[i].getAttribute('lowerCaseName')) {
+      keys[i].classList.remove('active');
+      keys[i].classList.add('remove');
+    }
+
+    if (e.code === 'Space') {
+      spaceKey.classList.add('active');
+      spaceKey.classList.remove('active');
+    }
+
+    if (e.code === 'ControlLeft') {
+      ctrlKey.classList.add('active');
+      ctrlKey.classList.remove('active');
+    }
+
+    if (e.code === 'MetaLeft') {
+      winKey.classList.add('active');
+      winKey.classList.remove('active');
+    }
+
+    if (e.code === 'Delete') {
+      deleteKey.classList.add('active');
+      deleteKey.classList.remove('active');
+    }
+
+    if (e.code === 'ShiftRight') {
+      RightShiftKey.classList.add('active');
+      RightShiftKey.classList.remove('active');
+    }
+
+    if (e.code === 'ControlRight') {
+      RightCtrlKey.classList.add('active');
+      RightCtrlKey.classList.remove('active');
+    }
+
+    if (e.code === 'ArrowUp') {
+      ArrowUpKey.classList.add('active');
+      ArrowUpKey.classList.remove('active');
+    }
+
+    if (e.code === 'ArrowDown') {
+      ArrowDownKey.classList.add('active');
+      ArrowDownKey.classList.remove('active');
+    }
+
+    if (e.code === 'ArrowLeft') {
+      ArrowLeftKey.classList.add('active');
+      ArrowLeftKey.classList.remove('active');
+    }
+
+    if (e.code === 'ArrowRight') {
+      ArrowRightKey.classList.add('active');
+      ArrowRightKey.classList.remove('active');
+    }
+
+    if (e.code === 'Tab') {
+      tabKey.classList.add('active');
+      tabKey.classList.remove('active');
+    }
+
+    setTimeout(() => {
+      keys[i].classList.remove('remove');
+    }, 200);
+  }
+});
