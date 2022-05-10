@@ -28,7 +28,7 @@ document.body.appendChild(footerDescriptionMassage);
 
 const MyPullRequest = document.createElement('h3');
 MyPullRequest.classList.add('pull-description');
-MyPullRequest.innerHTML = 'ссылка на пулл: <a class="pull-link" href="https://github.com/DmitryKremenetsky/virtual-keyboard-v2/pull/1"> Click </a>';
+MyPullRequest.innerHTML = 'ссылка на пулл: <a class="pull-link" href="https://github.com/DmitryKremenetsky/virtual-keyboard-v2/pull/2"> Click </a>';
 document.body.appendChild(MyPullRequest);
 
 const row1 = document.createElement('div');
