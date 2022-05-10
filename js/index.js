@@ -26,6 +26,11 @@ footerDescriptionMassage.classList.add('footer-description');
 footerDescriptionMassage.innerHTML = 'Переключение языка нет, но до конца кросс-чека сделаю :)';
 document.body.appendChild(footerDescriptionMassage);
 
+const MyPullRequest = document.createElement('h3');
+MyPullRequest.classList.add('pull-description');
+MyPullRequest.innerHTML = 'ссылка на пулл: <a class="pull-link" href="https://github.com/DmitryKremenetsky/virtual-keyboard-v2/pull/1"> Click </a>';
+document.body.appendChild(MyPullRequest);
+
 const row1 = document.createElement('div');
 row1.classList.add('rows');
 row1.id = 'row1';
