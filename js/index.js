@@ -69,11 +69,13 @@ const engKeysUpperCase = [
   ['Ctrl', 'Win', 'Alt', 'Space', 'Alt', '←', '↓', '→', 'RCtrl'],
 ];
 
-// const engKeysShiftCase = ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', 'Backspace',
-//   'Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[', ']', '/', 'Del',
-//   'CapsLock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', "'", 'Enter',
-//   'Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/', '↑', 'RShift',
-//   'Ctrl', 'Win', 'Alt', 'Space', 'Alt', '←', '↓', '→', 'RCtrl'];
+const engKeysShiftCase = [
+  ['~', '!', '@', '#', '$', '%', '^', '&', '*', ',', '_', '+', 'Backspace'],
+  ['Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[', ']', '\\', 'Del'],
+  ['CapsLock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', "'", 'Enter'],
+  ['Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/', '↑', 'RShift'],
+  ['Ctrl', 'Win', 'Alt', 'Space', 'Alt', '←', '↓', '→', 'RCtrl'],
+];
 
 const cssClassMap = {
   '`': 'backquote',
@@ -170,8 +172,21 @@ const switchCase = (isCapsLockActive) => {
   }
 };
 
+const switchCaseShift = (isShiftActive) => {
+  for (let rowIndex = 0; rowIndex < keyboardContainer.children.length; rowIndex++) {
+    const row = keyboardContainer.children[rowIndex].children;
+
+    for (let colIndex = 0; colIndex < row.length; colIndex++) {
+      row[colIndex].innerText = isShiftActive
+        ? engKeysShiftCase[rowIndex][colIndex]
+        : engKeys[rowIndex][colIndex];
+    }
+  }
+};
+
 const keyboardState = {
   capsLock: false,
+  shift: false,
 };
 
 const textArea = document.getElementById('textarea');
@@ -180,6 +195,11 @@ keyboardContainer.addEventListener('click', (e) => {
   if (e.target.dataset.keyname === 'capslock') {
     keyboardState.capsLock = !keyboardState.capsLock;
     switchCase(keyboardState.capsLock);
+  }
+
+  if (e.target.dataset.keyname === 'shift') {
+    keyboardState.shift = !keyboardState.shift;
+    switchCaseShift(keyboardState.shift);
   }
 
   if (e.target.dataset.keyname === 'capslock') {
