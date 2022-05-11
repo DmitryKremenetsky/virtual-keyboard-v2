@@ -23,7 +23,7 @@ document.body.appendChild(footerMassage);
 
 const footerDescriptionMassage = document.createElement('h3');
 footerDescriptionMassage.classList.add('footer-description');
-footerDescriptionMassage.innerHTML = 'Переключение языка нет, но до конца кросс-чека сделаю :)';
+footerDescriptionMassage.innerHTML = 'Переключение языка нет';
 document.body.appendChild(footerDescriptionMassage);
 
 const MyPullRequest = document.createElement('h3');
